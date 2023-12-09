@@ -1,12 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 
-const Profile = () => {
-  return (
-    <View>
-      <Text>Profile</Text>
-    </View>
-  )
-}
+const Profile = ({navigation}) => {
+  return <ScrollView style={styles.container}></ScrollView>;
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+    padding: 10,
+  },
+});
 
-export default Profile
+export default Profile;

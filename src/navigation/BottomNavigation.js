@@ -3,7 +3,6 @@ import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Home from '../screens/user/Home';
 import Profile from '../screens/user/Profile';
-import Transaction from '../screens/user/MarketPlace';
 import Setting from '../screens/user/Setting';
 const Tab = createMaterialBottomTabNavigator();
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -26,15 +25,7 @@ const BottomNavigation = () => {
         }}
         component={Home}
       />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="ethereum" color={color} size={25} />
-          ),
-        }}
-        name="Market Place"
-        component={Transaction}
-      />
+     
       <Tab.Screen
         options={{
           tabBarIcon: ({color, size}) => (

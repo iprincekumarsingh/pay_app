@@ -12,7 +12,7 @@ import theme from '../../constants/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const OtpVerification = () => {
+const OtpVerification = ({navigation}) => {
   const [buttonBottom, setButtonBottom] = useState(20);
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -250,6 +250,7 @@ const OtpVerification = () => {
           onPress={() => {
             // Add your onPress logic here
             AsyncStorage.setItem('token', 'test');
+            navigation.navigate('BottomNav');
             
           }}>
           <Text

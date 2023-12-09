@@ -26,7 +26,7 @@ const Setting = ({ navigation }) => {
       <SettingOption
         icon="calculator"
         text="Loan Calculator"
-        onPress={() => navigation.navigate('ProfileScreen')}
+        onPress={() => navigation.navigate('LoanCalculator')}
       />
 
       <SettingOption icon="bells" text="Push Notifications" />
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    padding: 10,
+    // padding: 10,
+    paddingHorizontal: 10,
   },
   heading: {
     fontSize: 24,

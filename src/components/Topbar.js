@@ -1,8 +1,8 @@
-import {View, Text, Image, Pressable} from 'react-native';
+import {View, Text, Image, Pressable, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Topbar = () => {
+const Topbar = ({navigation}) => {
   const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
@@ -63,7 +63,9 @@ const Topbar = () => {
       </View>
       <View>
         <Pressable
-          onPress={() => alert('Pressed!')}
+          onPress={() =>
+            navigation.navigate('Notification')
+          }
           style={{
             // backgroundColor: '#e7e7e7',
             padding: 10,

@@ -13,6 +13,7 @@ import theme from '../../constants/theme';
 const Login = ({navigation}) => {
   const [buttonBottom, setButtonBottom] = useState(20);
   const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -38,39 +39,41 @@ const Login = ({navigation}) => {
 
   return (
     <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
-      <View style={{flex: 1, backgroundColor: theme.colors.primary}}>
+      <View style={{flex: 1}}>
         {/* Header */}
         <View
           style={{
             padding: 20,
-            marginTop: 40,
+            marginTop: 10,
             alignItems: 'center',
             flexDirection: 'row',
+            gap: 20,
           }}>
           <Image
-            style={{width: 80, height: 80, marginBottom: 10}}
+            style={{width: 60, height: 60}}
             source={require('../../../assets/logo.png')}
           />
           <Text
             style={{
-              color: theme.colors.text,
+              color: 'black',
               fontFamily: 'sans-serif',
-              fontWeight: 'bold',
-              fontSize: 28,
+              fontWeight: '800',
+              fontSize: 38,
             }}>
-            Phoenix <Text style={{fontWeight: 'normal'}}>Pay</Text>
+            Phoenix <Text style={{fontWeight: 'normal',color:'#88d64c',fontWeight:'500'}}>Pay</Text>
           </Text>
         </View>
 
         {/* Input Section */}
         <Text
           style={{
-            fontSize: 22,
-            color: theme.colors.text,
+            fontSize: 28,
+            color: 'black',
             marginTop: 10,
             paddingHorizontal: 20,
+            fontWeight: '900',
           }}>
-          Sign Up or Login now!
+          Sign Up or Login!
         </Text>
         <View style={{paddingHorizontal: 20, marginTop: 20}}>
           <Text
@@ -79,49 +82,126 @@ const Login = ({navigation}) => {
               fontSize: 16,
               lineHeight: 24,
             }}>
-            Enter your number below. You'll receive an SMS with OTP
+            Get started with your custom mobile number
           </Text>
-          <Text
-            style={{
-              color: theme.colors.placeholder,
-              fontSize: 16,
-              lineHeight: 24,
-              marginTop: 10,
-            }}>
-            Mobile Number
-          </Text>
-          <View
-            style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-            <TextInput
-              style={{
-                paddingHorizontal: 18,
-                paddingVertical: 12,
-                width: '25%',
-                backgroundColor: '#E8E9EB',
-                borderRadius: 8,
-                color: 'black',
-                fontSize: 18,
-              }}
-              placeholder="+91"
-              placeholderTextColor={'black'}
-            />
+          {toggle != true ? (
+            <>
+              <Text
+                style={{
+                  color: theme.colors.placeholder,
+                  fontSize: 16,
+                  lineHeight: 24,
+                  marginTop: 10,
+                }}>
+                Mobile Number
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 10,
+                }}>
+                <TextInput
+                  style={{
+                    paddingHorizontal: 18,
+                    paddingVertical: 12,
+                    width: '25%',
+                    backgroundColor: '#E8E9EB',
+                    borderRadius: 8,
+                    color: 'black',
+                    fontSize: 18,
+                  }}
+                  placeholder="+91"
+                  placeholderTextColor={'black'}
+                />
 
-            <TextInput
-              style={{
-                paddingHorizontal: 20,
-                paddingVertical: 12,
-                flex: 1,
-                backgroundColor: '#F9F9F9',
-                borderRadius: 8,
-                color: 'black',
-                fontSize: 18,
-                borderWidth: 1,
-                marginLeft: 10,
-              }}
-              placeholder="9876543210"
-              placeholderTextColor={'black'}
-            />
-          </View>
+                <TextInput
+                  style={{
+                    paddingHorizontal: 20,
+                    paddingVertical: 12,
+                    flex: 1,
+                    backgroundColor: '#F9F9F9',
+                    borderRadius: 8,
+                    color: 'black',
+                    fontSize: 18,
+                    borderWidth: 1,
+                    marginLeft: 10,
+                  }}
+                  placeholder="9876543210"
+                  placeholderTextColor={'black'}
+                />
+              </View>
+            </>
+          ) : (
+            <>
+              <Text
+                style={{
+                  color: theme.colors.placeholder,
+                  fontSize: 16,
+                  lineHeight: 24,
+                  marginTop: 10,
+                }}>
+                Email
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 10,
+                }}>
+                <TextInput
+                  style={{
+                    paddingHorizontal: 20,
+                    paddingVertical: 12,
+                    flex: 1,
+                    backgroundColor: '#F9F9F9',
+                    borderRadius: 8,
+                    color: 'black',
+                    fontSize: 18,
+                    borderWidth: 1,
+                    marginLeft: 0,
+                  }}
+                  placeholder="Enter your email"
+                  placeholderTextColor={'black'}
+                />
+              </View>
+            </>
+          )}
+          {toggle != true ? (
+            <View>
+              <Pressable
+                onPress={() => {
+                  setToggle(true);
+                }}>
+                <Text
+                  style={{
+                    color: theme.colors.placeholder,
+                    fontSize: 16,
+                    lineHeight: 24,
+                    marginTop: 10,
+                  }}>
+                  Or use email instead
+                </Text>
+              </Pressable>
+            </View>
+          ) : (
+            <View>
+              <Pressable
+                onPress={() => {
+                  setToggle(false);
+                }}>
+                <Text
+                  style={{
+                    color: theme.colors.placeholder,
+                    fontSize: 16,
+                    lineHeight: 24,
+                    marginTop: 10,
+                  }}>
+                  Or use mobile number instead
+                </Text>
+              </Pressable>
+            </View>
+          )}
         </View>
 
         {/* Login Button */}
