@@ -1,17 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import AuthNavigatior from './src/navigation/AuthNavigatior'
 
-
-const App = () => {
+const MarketPlace = () => {
   return (
-    
-
-    <AuthNavigatior />
-  
+    <View>
+      <Text>MarketPlace</Text>
+    </View>
   )
 }
 
-export default App
+export default MarketPlace
 
 const styles = StyleSheet.create({})
